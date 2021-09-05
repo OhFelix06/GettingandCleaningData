@@ -8,8 +8,7 @@ library(dplyr)
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", "UCI HAR Dataset.zip", method="curl")
 unzip("UCI HAR Dataset.zip")
 
-## 1b. The data has been downloaded and saved under the work directory.
-## This step is to read all required files into tables.
+## 1b.To read all required files into tables.
 
 read.table("UCI HAR Dataset/test/subject_test.txt")->test_subject
 read.table("UCI HAR Dataset/train/subject_train.txt")->train_subject
@@ -23,19 +22,19 @@ read.table("UCI HAR Dataset/test/y_test.txt")->test_y
 read.table("UCI HAR Dataset/activity_labels.txt")->activity
 
 ##1c.To combine all tables into one data set.
-##to combine subject table and give the column name as Subject
+## to combine subject table and give the column name as Subject
 rbind(test_subject,train_subject)->subject
 colnames(subject)<- "Subject"
 
-##to combine features tables and give the column name from features file
+## to combine features tables and give the column name from features file
 rbind(test_X,train_X)->X
 colnames(X)<- t(features[2])
 
-##to combine activity tables and give the column name as Activity
+## to combine activity tables and give the column name as Activity
 rbind(train_y,test_y)->Y
 colnames(Y)<- "Activity"
 
-##to combine all parts into the final full set of data
+## to combine all parts into the final full set of data
 cbind(subject,X,Y)-> projectdata
 
 
@@ -74,5 +73,6 @@ extracts %>%
         group_by(Subject, Activity) %>%
         summarise_all(list(mean)) -> tidydata
 
+## To save the dataset
 write.table(tidydata, file = "Tidydata.txt")
 
