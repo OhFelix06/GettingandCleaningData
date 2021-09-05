@@ -74,5 +74,5 @@ extracts %>%
         summarise_all(list(mean)) -> tidydata
 
 ## To save the dataset
-write.table(tidydata, file = "Tidydata.txt")
+write.table(tidydata, file = "Tidydata.txt", row.name=FALSE)
 
