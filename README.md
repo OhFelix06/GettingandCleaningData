@@ -1,4 +1,4 @@
-# GettingandCleaningData
+# Getting and Cleaning Data
 Coursera Course Project
 
 This repo is for submission of Coursera Getting and Cleaning Data Course Project. 
